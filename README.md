@@ -66,7 +66,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
     -   [x] Commit: `Implement add function in Notification repository.`
     -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -85,5 +85,14 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. In this tutorial, we used RwLock<> to synchronise the use of Vec of Notifications. Explain why it is necessary for this case, and explain why we do not use Mutex<> instead?    
+**Answer:**    
+RwLock<Vec> is used in this case to make sure our multiple threads can access a shared data structure, specifically a Vec of Notifications, without causing conflicts or data inconsistencies. The reason for choosing RwLock over Mutex is because RwLock allows multiple threads to read data at the same time, which is great when there are more read operations than write operations. Mutex, on the other hand, only allows one thread to access data at a time, which can slow things down if there are lots of read operations happening.  
+
+2. In this tutorial, we used lazy_static external library to define Vec and DashMap as a “static” variable. Compared to Java where we can mutate the content of a static variable via a static function, why did not Rust allow us to do so?    
+**Answer:**   
+In Rust, static variables are immutable by default to ensure thread safety and prevent data races so we can't change it directly. This rules are used for explicit handling of concurrency concerns and reduces the risk of mutable shared state causing bugs. While Java allows direct mutation of static variables, Rust emphasizes safety and clarity by requiring explicit synchronization mechanisms like Mutex or RwLock for mutable access to shared static data, aligning with its focus on preventing common programming especially errors in concurrency.
+
+
 
 #### Reflection Subscriber-2
