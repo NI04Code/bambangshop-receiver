@@ -77,7 +77,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement receive function in Notification controller.`
     -   [x] Commit: `Implement list_messages function in Notification service.`
     -   [x] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -96,3 +96,14 @@ In Rust, static variables are immutable by default to ensure thread safety and p
 
 
 #### Reflection Subscriber-2
+1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.    
+**Answer:**   
+There's two things I learnt while doing steps in the tutorial, first is lazy static to declare a global variables with lazy behaviour which will initiated when it's needed, second is dashmap which is a equivalent of hashmap but with concurrency usage. I also learn about implementing push method observer pattern where subject notify subscriber as an observer (in this case, when product got published).
+
+2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?     
+**Answer:**     
+The Observer pattern simplifies adding more subscribers to a system like a notification system by separating the subject (e.g., Main app) from its observers (Receiver instances). Adding new subscribers is easy because each subscriber only needs to register itself to the subject, without requiring changes to the subject's core logic. When spawning multiple instances of the Main app, each instance can manage its set of subscribers independently.
+
+3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).   
+**Answer:**   
+For now, I haven't make any test or enhance any documentation on my postman collection, but I will try to implement it on my group project.
